@@ -17,6 +17,10 @@ export default class Sound {
     this.gain.connect(context.destination);
   }
 
+  getAnalyser() {
+    return this.analyser;
+  }
+
   play() {
     this.init();
     this.source.start();
