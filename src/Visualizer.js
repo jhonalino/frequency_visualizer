@@ -16,20 +16,20 @@ export default class Visualizer {
 
     requestAnimationFrame(this.draw);
   }
-  
+
   draw() {
     this.clearCanvas();
     this.ctx.translate(this.WIDTH / 2, this.HEIGHT / 2);
     this.analyser.getByteFrequencyData(this.dataArray);
 
-    const maxRadius = 200;
+    const maxRadius = this.WIDTH / 5 > 200 ? 200 : this.WIDTH / 5;
     const radius = Math.max(this.dataArray[3] / 255, 0.8) * maxRadius;
     this.ctx.rotate(2 * Math.PI * 0.0001); //circle rotation
     this.ctx.save();
     for (var i = this.cutSize; i < this.bufferLength; i++) {
       if (this.dataArray[i]) {
         const barWidth = radius * Math.tan((2 * Math.PI) / this.bufferLength); //DIVIDE the circle into equal segments
-        const barHeight = this.dataArray[i] / 1.5;
+        const barHeight = this.dataArray[i] / 2;
         const angle = Math.atan2(barWidth, radius); //
         this.ctx.rotate(angle * 1.1);
         this.ctx.save();

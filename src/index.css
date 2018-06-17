@@ -25,6 +25,19 @@ canvas {
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 450px) {
+  .title {
+    justify-content: flex-end;
+  }
+
+  .title h2 {
+    margin-bottom: 0;
+  }
+
+  .title h1 {
+    margin-top: 0;
+  }
+}
 
 .title h2 {
   font-weight: 200;
