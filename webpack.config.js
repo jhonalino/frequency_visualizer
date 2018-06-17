@@ -16,7 +16,7 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(png|jpg|gif|mp3)$/,
+        test: /\.(png|jpg|gif|mp3|svg)$/,
         use: [
           {
             loader: "file-loader"

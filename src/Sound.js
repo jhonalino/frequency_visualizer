@@ -9,6 +9,8 @@ export default class Sound {
     this.source = context.createBufferSource();
     this.source.buffer = this.buffer;
 
+    this.source.loop = true;
+
     this.gain = context.createGain();
     this.analyser = context.createAnalyser();
 
@@ -21,9 +23,8 @@ export default class Sound {
     return this.analyser;
   }
 
-  play() {
-    this.init();
-    this.source.start();
+  play(time) {
+    this.source.start(0, time);
   }
 
   stop(time = 0) {
