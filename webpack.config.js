@@ -6,7 +6,7 @@ module.exports = {
   entry: ["babel-polyfill", "./src/index.js"],
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "docs")
   },
   module: {
     rules: [
@@ -26,10 +26,10 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./docs"
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"]),
+    new CleanWebpackPlugin(["docs"]),
     new HtmlWebpackPlugin({ template: "./src/index.html" })
   ]
 };
