@@ -2,7 +2,7 @@ import Sound from "./Sound";
 import AudioBuffer from "./AudioBuffer";
 import Visualizer from "./Visualizer";
 import "./index.css";
-import aria from "./assets/ar.mp3";
+//import aria from "./assets/ar.mp3";
 import zig from "./assets/zigzag.mp3";
 
 let sound,
@@ -11,13 +11,13 @@ let sound,
   justLoaded = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const musicUrls = [aria, zig];
+  const musicUrls = [zig];
 
   const audioBuffer = new AudioBuffer(new AudioContext(), musicUrls);
   await audioBuffer.loadAll();
 
   audioCtx = new AudioContext();
-  sound = new Sound(audioCtx, audioBuffer.getSoundByIndex(1));
+  sound = new Sound(audioCtx, audioBuffer.getSoundByIndex(0));
   sound.init();
   const canvasCtx = getCanvasContext();
 
