@@ -17,6 +17,9 @@ export default class Sound {
     this.source.connect(this.analyser);
     this.analyser.connect(this.gain);
     this.gain.connect(context.destination);
+
+
+    
   }
 
   getAnalyser() {
