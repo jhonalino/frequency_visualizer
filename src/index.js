@@ -3,14 +3,16 @@ import AudioBuffer from "./AudioBuffer";
 import Visualizer from "./Visualizer";
 import "./index.css";
 import ch from "./assets/ch.mp3";
+import an from "./assets/andro.mp3";
 
 let sound,
 	visualizer,
 	audioCtx,
-	justLoaded = false;
+	justLoaded = false,
+	started = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
-	const musicUrls = [ch];
+	const musicUrls = [an];
 	const audioBuffer = new AudioBuffer(new AudioContext(), musicUrls);
 	await audioBuffer.loadAll();
 
@@ -24,6 +26,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 document.addEventListener("click", () => {
-	sound.play();
-	visualizer.initDraw();
+	if (justLoaded && !started) {
+		sound.play();
+		visualizer.initDraw();
+		started = true;
+	}
 });
