@@ -2,19 +2,6 @@ export default class Visualizer {
 	constructor(analyser) {
 		this.analyser = analyser;
 		this.draw = this.draw.bind(this);
-		this.runBars = true;
-		this.runCircles = true;
-
-		// document.addEventListener("keydown", _ => {
-		// 	if (this.runBars && this.runCircles) {
-		// 		this.runBars = false;
-		// 	} else if (!this.runBars && this.runCircles) {
-		// 		this.runBars = true;
-		// 		this.runCircles = false;
-		// 	} else {
-		// 		this.runBars = this.runCircles = true;
-		// 	}
-		// });
 	}
 
 	initDraw(fftSize = Math.pow(2, 7)) {
@@ -76,32 +63,24 @@ export default class Visualizer {
 
 		var colorScale = d3
 			.scaleLinear()
-			.domain([0, d3.max(this.dataset)])
-			.interpolate(d3.interpolateHcl)
+			.domain([0, this.dataset.length])
+			.interpolate(d3.interpolateHclLong)
 			.range([d3.rgb("#FD297B"), d3.rgb("#2196f3")]);
 
-		if (this.runCircles) {
-			this.circles
-				.data(this.dataset)
-				.attr("cx", (d, i) => xScale(i) + xScale.bandwidth() / 2)
-				.attr("cy", d => this.height - yScale(d))
-				.attr("r", d => xScale.bandwidth() / 2)
-				.attr("fill", d => colorScale(d));
-		} else {
-			this.circles.attr("fill", "none");
-		}
+		this.circles
+			.data(this.dataset)
+			.attr("cx", (d, i) => xScale(i) + xScale.bandwidth() / 2)
+			.attr("cy", d => this.height - yScale(d))
+			.attr("r", d => xScale.bandwidth() / 2)
+			.attr("fill", (d, i) => colorScale(i));
 
-		if (this.runBars) {
-			this.bars
-				.data(this.dataset)
-				.attr("x", (d, i) => xScale(i))
-				.attr("y", d => this.height - yScale(d))
-				.attr("width", xScale.bandwidth())
-				.attr("height", d => yScale(d) - this.padding)
-				.attr("fill", d => colorScale(d));
-		} else {
-			this.bars.attr("fill", "none")
-		}
+		this.bars
+			.data(this.dataset)
+			.attr("x", (d, i) => xScale(i))
+			.attr("y", d => this.height - yScale(d))
+			.attr("width", xScale.bandwidth())
+			.attr("height", d => yScale(d) - this.padding)
+			.attr("fill", (d, i) => colorScale(i));
 
 		requestAnimationFrame(this.draw);
 	}
