@@ -14,9 +14,9 @@ export default class Sound {
     this.gain = context.createGain();
     this.analyser = context.createAnalyser();
 
-    this.source.connect(this.analyser);
-    this.analyser.connect(this.gain);
-    this.gain.connect(context.destination);
+    this.source.connect(this.gain);
+    this.gain.connect(this.analyser);
+    this.analyser.connect(context.destination);
 
 
     

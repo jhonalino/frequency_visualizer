@@ -12,7 +12,7 @@ let sound,
 	started = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
-	const musicUrls = [an];
+	const musicUrls = [ch];
 	const audioBuffer = new AudioBuffer(new AudioContext(), musicUrls);
 	await audioBuffer.loadAll();
 
