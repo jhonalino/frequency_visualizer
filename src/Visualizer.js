@@ -9,7 +9,7 @@ export default class Visualizer {
 		this.bufferLength = this.analyser.frequencyBinCount;
 		this.dataset = new Uint8Array(this.bufferLength);
 
-		this.padding = 20;
+		this.padding = 10;
 		this.width = document.querySelector(".svg-container").offsetWidth;
 		this.height = document.querySelector(".svg-container").offsetHeight;
 
@@ -38,7 +38,7 @@ export default class Visualizer {
 
 		this.t1 = performance.now();
 
-		this.colorRevolutionTime = 1000;
+		this.colorRevolutionTime = 2000;
 		requestAnimationFrame(this.draw);
 	}
 	draw() {
@@ -90,8 +90,7 @@ export default class Visualizer {
 			.attr("width", xScale.bandwidth())
 			.attr("height", d => yScale(d) - this.padding)
 			.attr("fill", (d, i) => colorScale(i))
-			.attr("stroke", (d, i) => colorScale(i))
-			.attr("stroke-width", xScale.bandwidth() * 0.2);
+
 
 		requestAnimationFrame(this.draw);
 	}
