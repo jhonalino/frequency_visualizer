@@ -1,5 +1,6 @@
 export default class Visualizer {
-	constructor(analyser) {
+	constructor(analyser, audioCtx) {
+		this.audioCtx = audioCtx;
 		this.analyser = analyser;
 		this.draw = this.draw.bind(this);
 	}
@@ -42,6 +43,7 @@ export default class Visualizer {
 		requestAnimationFrame(this.draw);
 	}
 	draw() {
+		console.log(this.audioCtx.currentTime)
 		this.t2 = performance.now();
 		this.analyser.getByteFrequencyData(this.dataset);
 
@@ -89,8 +91,7 @@ export default class Visualizer {
 			.attr("y", d => this.padding)
 			.attr("width", xScale.bandwidth())
 			.attr("height", d => yScale(d) - this.padding)
-			.attr("fill", (d, i) => colorScale(i))
-
+			.attr("fill", (d, i) => colorScale(i));
 
 		requestAnimationFrame(this.draw);
 	}

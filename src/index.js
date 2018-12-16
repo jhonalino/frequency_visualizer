@@ -1,21 +1,12 @@
 import Sound from "./Sound";
-import AudioBuffer from "./AudioBuffer";
 import Visualizer from "./Visualizer";
 import "./index.css";
-import ch from "./assets/ch.mp3";
-import an from "./assets/andro.mp3";
-import cf from "./assets/cf.mp3";
-import a from "./assets/a.mp3";
 
 let sound,
 	visualizer,
-	audioCtx,
-	justLoaded = false,
-	started = false;
+	audioCtx
 
 document.addEventListener("DOMContentLoaded", async () => {
-	const musicUrls = [a];
-
 	audioCtx = new AudioContext();
 
 	init(audioCtx);
@@ -27,7 +18,7 @@ function init(audioCtx) {
 
 	fileInput.setAttribute("accept", "audio/mp3");
 
-	chooseFileBtn.addEventListener("click", handleClick => {
+	chooseFileBtn.addEventListener("click", _ => {
 		fileInput.click();
 	});
 
@@ -44,7 +35,7 @@ function init(audioCtx) {
 					sound = new Sound(audioCtx, buffer);
 					sound.init();
 
-					visualizer = new Visualizer(sound.getAnalyser());
+					visualizer = new Visualizer(sound.getAnalyser(), audioCtx);
 
 					visualizer.initDraw();
 					sound.play();
@@ -58,11 +49,3 @@ function init(audioCtx) {
 		}
 	});
 }
-
-// document.addEventListener("click", () => {
-// 	if (justLoaded && !started) {
-// 		sound.play();
-// 		visualizer.initDraw();
-// 		started = true;
-// 	}
-// });

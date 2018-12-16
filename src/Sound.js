@@ -9,17 +9,10 @@ export default class Sound {
     this.source = context.createBufferSource();
     this.source.buffer = this.buffer;
 
-    this.source.loop = true;
-
-    this.gain = context.createGain();
     this.analyser = context.createAnalyser();
 
-    this.source.connect(this.gain);
-    this.gain.connect(this.analyser);
+    this.source.connect(this.analyser);
     this.analyser.connect(context.destination);
-
-
-    
   }
 
   getAnalyser() {
