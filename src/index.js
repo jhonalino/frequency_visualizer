@@ -45,6 +45,7 @@ function handleFileInputChange(event) {
 	const files = event.target.files;
 
 	if (files.length > 0) {
+		svgContainer.classList.remove("hidden");
 		loader.classList.remove("hidden");
 		filePickerContainer.classList.add("hidden");
 		readAudioFile(files[0]);
@@ -98,8 +99,12 @@ function createNewAudioCtx(result) {
 }
 
 function loadSample() {
+	svgContainer.classList.add("hidden");
+	
 	name.innerHTML = `<a target="_blank" href="https://www.toneden.io/ikson/post/ikson-fresh-download">Fresh by Ikson</a>`;
+	
 	loader.classList.remove("hidden");
+	
 	filePickerContainer.classList.add("hidden");
 	let request = new XMLHttpRequest();
 	request.open("get", sample, true);
