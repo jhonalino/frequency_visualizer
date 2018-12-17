@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400");
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display");
 
 body {
 	height: 100vh;
@@ -12,24 +12,7 @@ body {
 		rgba(2, 1, 2, 1) 100%
 	);
 
-	font-family: "Roboto Mono", monospace;
-}
-
-.time,
-.name h1,
-.name p {
-	margin: 0.1em;
-	text-transform: uppercase;
-	font-weight: lighter;
-}
-
-.info {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	width: 100%;
-	padding: 0 2em;
-	box-sizing: border-box;
+	font-family: "Major Mono Display", monospace;
 }
 
 svg {
@@ -52,32 +35,59 @@ svg {
 	width: 100%;
 }
 
-.options-container {
-	width: 400px;
+.time,
+.name h1,
+.name p {
+	margin: 0.1em;
+	font-weight: lighter;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 100%;
+	padding: 0 2em;
+	box-sizing: border-box;
+}
+
+.info .name a {
+	text-decoration: none;
+	color: white;
+	text-transform: lowercase;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.file-picker-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.file-picker-container p {
+	display: flex;
+	align-items: center;
 }
 
 .btn {
-	padding: 0.3em 0.5em;
-	outline: none;
-	font-size: 1.5em;
-	border: 1px solid blue;
-	font-weight: lighter;
-	margin: 0.1em 0.05em;
-	background: transparent;
-	color: white;
-	animation: shiny 20s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate;
+	cursor: pointer;
 }
 
-@keyframes shiny {
-	0% {
-		border-color: #00bcd4;
-	}
+.btn:hover {
+	color: rgb(105, 250, 255);
+}
 
-	50% {
-		border-color: #e91e63;
-	}
+.links {
+	position: absolute;
+	bottom: 1em;
+}
 
-	100% {
-		border-color: #673ab7;
-	}
+.links a {
+	text-decoration: none;
+	color: white;
+	text-transform: lowercase;
 }

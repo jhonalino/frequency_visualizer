@@ -3,6 +3,24 @@ export default class Visualizer {
 		this.audioCtx = audioCtx;
 		this.analyser = analyser;
 		this.draw = this.draw.bind(this);
+
+		this.req;
+	}
+
+	stop() {
+		cancelAnimationFrame(this.req);
+	}
+
+	start() {
+		this.req = requestAnimationFrame(this.draw);
+	}
+
+	setCtx(audioCtx) {
+		this.audioCtx = audioCtx;
+	}
+
+	setAnalyser(analyser) {
+		this.analyser = analyser;
 	}
 
 	initDraw(fftSize = Math.pow(2, 7)) {
@@ -13,6 +31,12 @@ export default class Visualizer {
 		this.padding = 10;
 		this.width = document.querySelector(".svg-container").offsetWidth;
 		this.height = document.querySelector(".svg-container").offsetHeight;
+
+		var svgContainer = document.querySelector(".svg-container");
+
+		while (svgContainer.firstChild) {
+			svgContainer.removeChild(svgContainer.firstChild);
+		}
 
 		this.svg = d3
 			.select(".svg-container")
@@ -40,10 +64,11 @@ export default class Visualizer {
 		this.t1 = performance.now();
 
 		this.colorRevolutionTime = 2000;
-		requestAnimationFrame(this.draw);
+
+		this.start();
 	}
+
 	draw() {
-		console.log(this.audioCtx.currentTime)
 		this.t2 = performance.now();
 		this.analyser.getByteFrequencyData(this.dataset);
 

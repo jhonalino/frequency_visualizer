@@ -9,20 +9,39 @@
 			href="https://fonts.googleapis.com/css?family=Montserrat:200,400"
 			rel="stylesheet"
 		/>
+
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+			integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+			crossorigin="anonymous"
+		/>
 	</head>
 
 	<body>
 		<div class="container">
-			<div class="info">
-				<div class="name">
-					<h1>tears in your face</h1>
+			<div class="info hidden">
+				<div class="name"></div>
+				<div class="controls">
+					<img class="chooseFile" src="static/folder_open.svg" />
 				</div>
-				<div class="time">0:00 / 1:39</div>
 			</div>
-			<div class="svg-container"></div>
-
-			<button class="btn" id="chooseFile">choose an mp3 file</button>
-			<input type="file" style="display: none" id="fileInput" />
+			<div class="svg-container hidden"></div>
+			<div class="file-picker-container">
+				<p class="chooseFile btn">choose an audio file</p>
+				<p>or</p>
+				<p id="playSample" class="btn">play a sample</p>
+			</div>
+			<img src="static/audio.svg" alt="loading" class="loader hidden" />
+			<input type="file" class="hidden" id="fileInput" />
+			<div class="links">
+				<a target="_blank" href="https://jhonalino.com/">jhon alino</a>
+				<a
+					target="_blank"
+					href="https://github.com/jhonalino/frequency_visualizer"
+					>github</a
+				>
+			</div>
 		</div>
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 	</body>
