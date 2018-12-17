@@ -19,6 +19,7 @@
 * https://css-tricks.com/introduction-web-audio-api/
 * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
 * https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+* https://github.com/d3/d3/wiki
 
 ### inspiration 
 https://www.youtube.com/watch?v=CLEWmT_8ppM
